@@ -1,4 +1,4 @@
-from playwright.sync_api import sync_playwright , expect
+from playwright.sync_api import sync_playwright, expect
 
 with sync_playwright() as playwright:
     browser = playwright.chromium.launch(headless=False)
@@ -6,7 +6,7 @@ with sync_playwright() as playwright:
 
     page.goto('https://nikita-filonov.github.io/qa-automation-engineer-ui-course/#/auth/registration')
     email_input_registration = page.get_by_test_id('registration-form-email-input').locator('input')
-    email_input_registration.fill('user.name@gmail.com"')
+    email_input_registration.fill('user.name@gmail.com')
 
     username_input_registration = page.get_by_test_id('registration-form-username-input').locator('input')
     username_input_registration.fill('username')
