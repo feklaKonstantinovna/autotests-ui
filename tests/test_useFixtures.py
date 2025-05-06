@@ -2,7 +2,7 @@ import pytest
 
 @pytest.fixture()
 def clear_books_database():
-    print('[FIXTURE] Удал   яем все данные из базы данных')
+    print('[FIXTURE] Удаляем все данные из базы данных')
 
 @pytest.fixture()
 def  fill_books_database():
@@ -10,7 +10,7 @@ def  fill_books_database():
 
 @pytest.mark.usefixtures('fill_books_database')
 def test_read_all_books_in_library():
-    print('Readin  g all books')
+    print('Reading all books')
 
 @pytest.mark.usefixtures(
     'clear_books_database',
