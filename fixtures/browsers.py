@@ -2,8 +2,6 @@ import pytest
 from playwright.sync_api import sync_playwright, Page, Playwright, expect
 
 
-from playwright_autorization import page
-
 
 @pytest.fixture()
 def chromium_page(playwright: Playwright) -> Page:
