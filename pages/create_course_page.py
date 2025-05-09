@@ -24,7 +24,7 @@ class CreateCoursePage(BasePage):
             'create-course-preview-image-upload-widget-info-title-text'
         )
         self.preview_image_upload_description = page.get_by_test_id(
-            'create-course-preview-image-upload-widget-info-title-text'
+            'create-course-preview-image-upload-widget-info-description-text'
         )
         self.preview_image_upload_button = page.get_by_test_id(
             'create-course-preview-image-upload-widget-upload-button'
@@ -38,7 +38,7 @@ class CreateCoursePage(BasePage):
 
         # Описание полей создания курса
 
-        self.create_course_title_input = page.get_by_test_id('create-course-form-title-input')
+        self.create_course_title_input = page.get_by_test_id('create-course-form-title-input').locator('input')
         self.create_course_estimated_time_input = page.get_by_test_id(
             'create-course-form-estimated-time-input').locator('input')
         self.create_course_description_textarea = page.get_by_test_id('create-course-form-description-input').locator(
@@ -92,6 +92,7 @@ class CreateCoursePage(BasePage):
         if is_image_upload:
             expect(self.preview_image_remove_button).to_be_visible()
 
+
     def click_remove_image_button(self):
         self.preview_image_remove_button.click()
 
@@ -105,8 +106,8 @@ class CreateCoursePage(BasePage):
                                          title: str,
                                          estimated_time: str,
                                          description: str,
-                                         max_core: str,
-                                         min_core: str):
+                                         max_score: str,
+                                         min_score: str):
         expect(self.create_course_title_input).to_be_visible()
         expect(self.create_course_title_input).to_have_value(title)
 
@@ -117,17 +118,17 @@ class CreateCoursePage(BasePage):
         expect(self.create_course_description_textarea).to_have_value(description)
 
         expect(self.create_course_max_score_input).to_be_visible()
-        expect(self.create_course_max_score_input).to_have_value(max_core)
+        expect(self.create_course_max_score_input).to_have_value(max_score)
 
         expect(self.create_course_min_score_input).to_be_visible()
-        expect(self.create_course_min_score_input).to_have_value(min_core)
+        expect(self.create_course_min_score_input).to_have_value(min_score)
 
     def fill_create_course_form(self,
                                 title: str,
                                 estimated_time: str,
                                 description: str,
-                                max_core: str,
-                                min_core: str):
+                                max_score: str,
+                                min_score: str):
         self.create_course_title_input.fill(title)
         expect(self.create_course_title_input).to_have_value(title)
 
@@ -137,15 +138,18 @@ class CreateCoursePage(BasePage):
         self.create_course_description_textarea.fill(description)
         expect(self.create_course_description_textarea).to_have_value(description)
 
-        self.create_course_max_score_input.fill(max_core)
-        expect(self.create_course_max_score_input).to_have_value(max_core)
+        self.create_course_max_score_input.fill(max_score)
+        expect(self.create_course_max_score_input).to_have_value(max_score)
 
-        self.create_course_min_score_input.fill(min_core)
-        expect(self.create_course_min_score_input).to_have_value(min_core)
+        self.create_course_min_score_input.fill(min_score)
+        expect(self.create_course_min_score_input).to_have_value(min_score)
 
     def check_visible_exercises_title(self):
         expect(self.exercises_title).to_be_visible()
         expect(self.exercises_title).to_have_text('Exercises')
+
+    def check_visible_create_exercise_button(self):
+        expect(self.create_exercises_button).to_be_visible()
 
     def click_visible_exercises_button(self):
         self.create_exercises_button.click()
