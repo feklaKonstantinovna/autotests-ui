@@ -21,6 +21,11 @@ def registration_page(chromium_page: Page) -> RegistrationPage:
 def dashboard_page(chromium_page: Page) -> DashboardPage:
     return DashboardPage(page=chromium_page)
 
+# Данная фикстура используется с открытием уже сохраненного состояния
+@pytest.fixture()
+def dashboard_page_with_state(chromium_page_with_state: Page) -> DashboardPage:
+    return DashboardPage(page=chromium_page_with_state)
+
 @pytest.fixture()
 def courses_page_list(chromium_page_with_state: Page) -> CoursesListPage:
     return CoursesListPage(page=chromium_page_with_state)
