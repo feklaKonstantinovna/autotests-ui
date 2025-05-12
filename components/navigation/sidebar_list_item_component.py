@@ -11,7 +11,7 @@ class SidebarListItemComponent(BaseComponent):
         self.title = page.get_by_test_id(f'{identifier}-drawer-list-item-title-text')
         self.button = page.get_by_test_id(f'{identifier}-drawer-list-item-button')
 
-    def check_visible(self, title:str):
+    def check_visible(self, title: str):
         expect(self.icon).to_be_visible()
 
         expect(self.title).to_be_visible()

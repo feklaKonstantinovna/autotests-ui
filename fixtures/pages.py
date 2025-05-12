@@ -2,6 +2,7 @@ import pytest
 
 from playwright.sync_api import Page
 
+from components.navigation.sidebar_component import SidebarComponent
 from pages.courses_page_list import CoursesListPage
 from pages.create_course_page import CreateCoursePage
 from pages.login_page import LoginPage
@@ -33,3 +34,7 @@ def courses_page_list(chromium_page_with_state: Page) -> CoursesListPage:
 @pytest.fixture()
 def create_course_page(chromium_page_with_state: Page) -> CreateCoursePage:
     return CreateCoursePage(page=chromium_page_with_state)
+
+@pytest.fixture()
+def sidebar_component(chromium_page_with_state: Page) -> SidebarComponent:
+    return SidebarComponent(page=chromium_page_with_state)
