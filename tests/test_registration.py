@@ -1,4 +1,4 @@
-from playwright.sync_api import sync_playwright, Page, expect
+from playwright.sync_api import sync_playwright, Page
 import pytest
 
 from fixtures.pages import registration_page
@@ -7,21 +7,17 @@ from pages.registration_page import RegistrationPage
 from fixtures.pages import dashboard_page
 from pages.dashboard_page import DashboardPage
 
-user_data = {
-    ("user.name@gmail.com ", "user", "password")
-}
 
-user_ids = {
-    "successful user registration"
-}
-
-
-@pytest.mark.regression
 @pytest.mark.registration
-@pytest.mark.parametrize('email, username, password', user_data, ids=user_ids)
-def test_successful_registration(email: str, username: str, password: str, registration_page: RegistrationPage,
+@pytest.mark.regression
+def test_successful_registration(registration_page: RegistrationPage,
                                  dashboard_page: DashboardPage):
+    email = "testuser@example.com"
+    username = "testuser"
+    password = "SecurePassword123"
+
     registration_page.visit('https://nikita-filonov.github.io/qa-automation-engineer-ui-course/#/auth/registration')
-    registration_page.fill_registration_form(email=email, username=username, password=password)
+    registration_page.registration_form.fill(email=email, username=username, password=password)
+    registration_page.registration_form.check_visible(email=email, username=username, password=password)
     registration_page.click_registration_button()
-    dashboard_page.check_visible_dashboard_title()
+    dashboard_page.dashboard_toolbar.check_visible()
