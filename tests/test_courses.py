@@ -2,7 +2,7 @@ import pytest
 from playwright.sync_api import sync_playwright, Page
 
 from fixtures.pages import courses_page_list
-from pages.courses_page_list import CoursesListPage
+from pages.courses_list_page import CoursesListPage
 
 
 @pytest.mark.courses
@@ -11,6 +11,6 @@ def test_empty_courses_list(chromium_page_with_state: Page, courses_page_list: C
     courses_page_list.visit('https://nikita-filonov.github.io/qa-automation-engineer-ui-course/#/courses')
     courses_page_list.navbar.check_visible('username')
     courses_page_list.sidebar.check_visible()
-    courses_page_list.check_visible_courses_title()
-    courses_page_list.check_visible_create_course_button()
+    courses_page_list.toolbar_view.check_visible()
+    
     courses_page_list.check_visible_empty_view()

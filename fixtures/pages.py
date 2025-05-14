@@ -3,7 +3,7 @@ import pytest
 from playwright.sync_api import Page
 
 from components.navigation.sidebar_component import SidebarComponent
-from pages.courses_page_list import CoursesListPage
+from pages.courses_list_page import CoursesListPage
 from pages.create_course_page import CreateCoursePage
 from pages.login_page import LoginPage
 from pages.registration_page import RegistrationPage
