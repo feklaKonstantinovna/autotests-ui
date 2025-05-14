@@ -3,10 +3,10 @@ from components.base_component import BaseComponent
 
 
 class CreateCourseExerciseToolbarViewComponent(BaseComponent):
-    def __init__(self, page: Page, identifier: str):
+    def __init__(self, page: Page):
         super().__init__(page)
-        self.title = page.get_by_test_id(f'{identifier}-title-text')
-        self.create_exercises_button = page.get_by_test_id(f'{identifier}-create-exercise-button')
+        self.title = page.get_by_test_id('create-course-exercises-box-toolbar-title-text')
+        self.create_exercises_button = page.get_by_test_id('create-course-exercises-box-toolbar-create-exercise-button')
 
     def check_visible(self):
         expect(self.title).to_be_visible()

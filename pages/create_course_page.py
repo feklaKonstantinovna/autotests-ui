@@ -19,11 +19,10 @@ class CreateCoursePage(BasePage):
         self.preview_empty_view = EmptyViewComponent(page, 'create-course-preview')
         self.image_upload_widget = ImageUploadWidgetComponent(page, "create-course-preview")
         self.exercises_empty_view = EmptyViewComponent(page, 'create-course-exercises')
-        self.create_course_form = CreateCourseFormComponent(page, 'create-course-form')
+        self.create_course_form = CreateCourseFormComponent(page)
         self.create_exercise_course_form = CreateCourseExerciseFormComponent(page)
-        self.create_course_toolbar = CreateCourseToolbarViewComponent(page, 'create-course-toolbar')
-        self.create_course_exercise_toolbar = CreateCourseExerciseToolbarViewComponent(page,
-            'create-course-exercises-box-toolbar')
+        self.create_course_toolbar = CreateCourseToolbarViewComponent(page)
+        self.create_course_exercise_toolbar = CreateCourseExerciseToolbarViewComponent(page)
 
     def check_visible_exercises_empty_view(self):
         self.exercises_empty_view.check_visible(
