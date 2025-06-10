@@ -10,6 +10,7 @@ from pages.authentication.registration_page import RegistrationPage
 from pages.dashboard.dashboard_page import DashboardPage
 
 
+
 @pytest.fixture()
 def login_page(chromium_page: Page) -> LoginPage:
     return LoginPage(page=chromium_page)
