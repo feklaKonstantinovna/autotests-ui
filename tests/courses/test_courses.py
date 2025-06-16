@@ -1,3 +1,4 @@
+import allure
 import pytest
 from playwright.sync_api import Page
 
@@ -11,7 +12,7 @@ from pages.courses.create_course_page import CreateCoursePage
 @pytest.mark.courses
 @pytest.mark.regression
 class TestCourses:
-
+    @allure.title('Check displaying of empty courses list')
     def test_empty_courses_list(self, chromium_page_with_state: Page, courses_page_list: CoursesListPage):
         courses_page_list.visit('https://nikita-filonov.github.io/qa-automation-engineer-ui-course/#/courses')
         courses_page_list.navbar.check_visible('username')
@@ -20,6 +21,7 @@ class TestCourses:
 
         courses_page_list.check_visible_empty_view()
 
+    @allure.title('Crate course')
     def test_create_course(self, create_course_page: CreateCoursePage, courses_page_list: CoursesListPage):
         # 1. Переход на страницу создания курса
         create_course_page.visit('https://nikita-filonov.github.io/qa-automation-engineer-ui-course/#/courses/create')
