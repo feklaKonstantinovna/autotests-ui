@@ -1,5 +1,6 @@
 import pytest
 import allure
+from tools.allure.tags import AllureTag
 from fixtures.pages import login_page
 
 from pages.authentication.login_page import LoginPage
@@ -9,10 +10,10 @@ from pages.dashboard.dashboard_page import DashboardPage
 
 @pytest.mark.regression
 @pytest.mark.authorization
-@allure.tag("REGRESSION", "AUTHORIZATION" )
+@allure.tag(AllureTag.REGRESSION, AllureTag.AUTHORIZATION)
 class TestAuthorization:
     @allure.title('User login with correct email and password')
-    @allure.tag('USER_LOGIN')
+    @allure.tag(AllureTag.USER_LOGIN)
     def test_successful_authorization(self,
                                       dashboard_page: DashboardPage,
                                       registration_page: RegistrationPage,
@@ -36,7 +37,7 @@ class TestAuthorization:
                               ("  ", "password"), ])
 
     @allure.title('User login with wrong email or password')
-    @allure.tag('USER_LOGIN')
+    @allure.tag(AllureTag.USER_LOGIN)
     def test_wrong_email_or_password_authorization(self, email: str, password: str, login_page: LoginPage):
 
         login_page.visit('https://nikita-filonov.github.io/qa-automation-engineer-ui-course/#/auth/login')
@@ -46,7 +47,7 @@ class TestAuthorization:
         login_page.check_visible_wrong_email_or_password_alert()
 
     @allure.title('Navigation from login page to registration page')
-    @allure.tag('NAVIGATION')
+    @allure.tag(AllureTag.NAVIGATION)
     def test_navigate_from_authorization_to_registration(self,
                                                          login_page: LoginPage,
                                                          registration_page: RegistrationPage):

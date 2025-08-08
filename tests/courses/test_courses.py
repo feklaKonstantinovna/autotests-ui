@@ -1,4 +1,5 @@
 import allure
+from tools.allure.tags import AllureTag
 import pytest
 from playwright.sync_api import Page
 
@@ -11,6 +12,7 @@ from pages.courses.create_course_page import CreateCoursePage
 
 @pytest.mark.courses
 @pytest.mark.regression
+@allure.tag(AllureTag.REGRESSION, AllureTag.COURSES )
 class TestCourses:
     @allure.title('Check displaying of empty courses list')
     def test_empty_courses_list(self, chromium_page_with_state: Page, courses_page_list: CoursesListPage):
